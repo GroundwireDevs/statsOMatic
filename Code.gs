@@ -64,8 +64,8 @@ function gaImport(){
     if (token === null) {
       // Sets the body data to be sent (Echo login email address and password)
       var payload = {
-        'email' : '***REMOVED***',
-        'password' : '***REMOVED***'
+        'email' : ECHO_EMAIL,
+        'password' : ECHO_PASSWORD
       };
       // Sets the request options
    var options = {
