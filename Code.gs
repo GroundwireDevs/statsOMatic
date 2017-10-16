@@ -2,6 +2,9 @@
 var daysAgo = 1;
 // Sets the token variable, this way, multiple functions can tell if it has been set or not
 var token = null;
+// Gets Properties object
+var scriptProperties = PropertiesService.getScriptProperties();
+
 // Function which subtracts an amount of days from a date object
 function subDaysFromDate(date,d){
   // d = number of day ro substract and date = start date
@@ -64,8 +67,8 @@ function gaImport(){
     if (token === null) {
       // Sets the body data to be sent (Echo login email address and password)
       var payload = {
-        'email' : ECHO_EMAIL,
-        'password' : ECHO_PASSWORD
+        'email' : scriptProperties.getProperty('ECHO_EMAIL'),
+        'password' : scriptProperties.getProperty('ECHO_PASSWORD')
       };
       // Sets the request options
    var options = {
