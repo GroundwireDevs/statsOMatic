@@ -4,7 +4,6 @@ var daysAgo = 1;
 var token = null;
 // Gets Properties object
 var scriptProperties = PropertiesService.getScriptProperties();
-
 // Function which subtracts an amount of days from a date object
 function subDaysFromDate(date,d){
   // d = number of day ro substract and date = start date
