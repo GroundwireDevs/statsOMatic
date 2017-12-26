@@ -1,5 +1,5 @@
 // Sets which day to get data from and output to, this is the only variable which needs to be changed to select different dates.
-var daysAgo = 25;
+var daysAgo = 1;
 // Sets the token variable, this way, multiple functions can tell if it has been set or not
 var token = null;
 // Gets Properties object
