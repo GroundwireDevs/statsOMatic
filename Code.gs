@@ -1,5 +1,5 @@
 // Sets which day to get data from and output to, this is the only variable which needs to be changed to select different dates.
-var daysAgo = 1;
+var daysAgo = 25;
 // Sets the token variable, this way, multiple functions can tell if it has been set or not
 var token = null;
 // Gets Properties object
@@ -34,7 +34,7 @@ function gaImport(){
   // Sets the ranges of the three columns which will be written to
   jesuscaresUsersRange = values = SpreadsheetApp.getActiveSheet().getRange("Q" + writeRow);
   jesuscaresCommitmentsRange = values = SpreadsheetApp.getActiveSheet().getRange("P" + writeRow);
-  groundwireCommitmentRange = values = SpreadsheetApp.getActiveSheet().getRange("O" + writeRow);
+  spanishCommitmentRange = values = SpreadsheetApp.getActiveSheet().getRange("O" + writeRow);
   // Sets the start and end date
   var startDate = daysAgo + 'daysAgo';
   var endDate = daysAgo + 'daysAgo';
@@ -48,17 +48,14 @@ function gaImport(){
   var jcCommitmentsMetric = 'ga:goal7Completions';
   var jcCommitmentsReport = Analytics.Data.Ga.get(tableId, startDate, endDate, jcCommitmentsMetric);
   jesuscaresCommitmentsRange.setValue(jcCommitmentsReport.rows);
-  // Sets the Groundwire table
-  var gwTableId = 'ga:' + 5611435;
-  // Sets the number of commitments (adding salvations and recommitments)
-  var gwRecommitmentsMetric = 'ga:goal4Completions';
-  var gwRecommitmentReport = Analytics.Data.Ga.get(gwTableId, startDate, endDate, gwRecommitmentsMetric);
-  var gwRecommitments = gwRecommitmentReport.rows;
-  var gwSalvationsMetric = 'ga:goal3Completions';
-  var gwSalvationReport = Analytics.Data.Ga.get(gwTableId, startDate, endDate, gwSalvationsMetric);
-  var gwSalvations = gwSalvationReport.rows;
-  var gwTotal = parseInt(gwRecommitments) + parseInt(gwSalvations);
-  groundwireCommitmentRange.setValue(gwTotal);
+  // Sets the Spanish table
+  var esTableId = 'ga:' + 139256920;
+  // Sets the number of commitments (adding salvations/recommitments)
+  var esSalvationsMetric = 'ga:goal7Completions';
+  var esSalvationReport = Analytics.Data.Ga.get(esTableId, startDate, endDate, esSalvationsMetric);
+  var esSalvations = esSalvationReport.rows;
+  var esTotal = parseInt(esSalvations);
+  spanishCommitmentRange.setValue(esTotal);
 }
   // Gets an authentication token from Echo based on an Echo user's email and password
   function echoAuth() {
